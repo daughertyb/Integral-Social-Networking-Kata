@@ -2,7 +2,7 @@ Integral Social Networking Kata
 
 Summary: 
 
-Contains core logic for a social networking application similar to twitter. Features include publishing a message to a personal timeline. Viewing other timelines by user and viewing other timelines based on users followed (future). 
+Contains core logic for a social networking application similar to twitter. Features include publishing a message to a personal timeline, viewing other timelines by user and viewing other timelines based on users followed (future). 
 
 How to View:
 
