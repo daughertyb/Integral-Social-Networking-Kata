@@ -10,8 +10,11 @@ public class Publish {
 	Timeline timeline = new Timeline();
 	MockDatabase mockData = new MockDatabase();
 
-	/* FEATURE - PUBLISH - Takes in name, message, timestamp and returns an updated list of timelines that can be used to validate publish was successful. */
-	
+	/*
+	 * FEATURE - PUBLISH - Takes in name, message, timestamp and returns an updated
+	 * list of timelines that can be used to validate publish was successful.
+	 */
+
 	public ArrayList<Timeline> publish(String name, String message, LocalDateTime localDateTime) {
 
 		ArrayList<Timeline> timelineData = mockData.createTimelineData();
@@ -21,7 +24,7 @@ public class Publish {
 		timeline.setTimestamp(localDateTime);
 
 		timelineData.add(timeline);
-		
+
 		return timelineData;
 
 	}

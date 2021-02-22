@@ -1,8 +1,6 @@
 package kata;
 
 import org.junit.jupiter.api.Test;
-
-import kata.app.Kata;
 import kata.model.Timeline;
 import kata.model.User;
 import kata.services.ManageTimeline;
@@ -21,9 +19,11 @@ class KataTest {
 	Publish publish = new Publish();
 	ManageTimeline manageTime = new ManageTimeline();
 
+	ArrayList<Timeline> list = new ArrayList();
+	ArrayList<User> ulist = new ArrayList();
+
 	@Test
 	void testCreateMockTimelineDataList() {
-		ArrayList<Timeline> list = new ArrayList();
 		list = mockData.createTimelineData();
 		int expected = 3;
 		int actual = list.size();
@@ -33,17 +33,15 @@ class KataTest {
 
 	@Test
 	void testCreateMockUserDataList() {
-		ArrayList<User> list = new ArrayList();
-		list = mockData.createUserData();
+		ulist = mockData.createUserData();
 		int expected = 3;
-		int actual = list.size();
+		int actual = ulist.size();
 
 		assertEquals(expected, actual);
 	}
 
 	@Test
 	void testCreateMockTimelineDataContents() {
-		ArrayList<Timeline> list = new ArrayList();
 		String expected = "Darn! We lost!";
 		String actual = "";
 		list = mockData.createTimelineData();
@@ -57,23 +55,26 @@ class KataTest {
 		assertEquals(expected, actual);
 	}
 
-	// FEAUTURE - PUBLISH TEST - Confirm message is published when publish method is
-	// called.
+	/*
+	 * FEAUTURE - PUBLISH TEST - Confirm message is published when publish method is
+	 * called.
+	 */
 
 	@Test
 	void testPublishMethodAddsToDatabase() {
 		String name = "Alice";
 		String message = "I love the weather today.";
 		LocalDateTime timestamp = LocalDateTime.now();
-
 		int expected = 4;
 		int actual = publish.publish(name, message, timestamp).size();
 
 		assertEquals(expected, actual);
 	}
 
-	// FEAUTURE - PUBLISH TEST - Confirm message is published when publish method is
-	// called.
+	/*
+	 * FEAUTURE - PUBLISH TEST - Confirm message is published when publish method is
+	 * called.
+	 */
 
 	@Test
 	void testPublishMethodAddsToDatabaseContents() {
@@ -82,7 +83,7 @@ class KataTest {
 		LocalDateTime timestamp = LocalDateTime.now();
 		String expected = message;
 		String actual = "";
-		ArrayList<Timeline> list = publish.publish(name, message, timestamp);
+		list = publish.publish(name, message, timestamp);
 
 		for (Timeline timeline : list) {
 			if (timeline.getName().equals("Alice")) {
@@ -94,7 +95,9 @@ class KataTest {
 
 	}
 
-	// FEATURE - TIMELINE - Confirm user can view another user's timeline by name.
+	/*
+	 * FEATURE - TIMELINE - Confirm user can view another user's timeline by name.
+	 */
 
 	@Test
 	void testViewTimelineByName() {
@@ -106,23 +109,26 @@ class KataTest {
 		assertEquals(expected, actual);
 
 	}
-	
-	// FEATURE - TIMELINE - Confirm user can view another user's timeline by name.
-	
+
+	/*
+	 * FEATURE - TIMELINE - Confirm user can view another user's timeline by name.
+	 */
+
 	@Test
 	void testViewTimelineByNameContents() {
 		String name = "Bob";
 		String expected = "Darn! We lost!";
 		String actual = "";
-		ArrayList<Timeline> list = manageTime.viewTimelineByName(name);
-		
+		list = manageTime.viewTimelineByName(name);
+
 		for (Timeline timeline : list) {
 			if (timeline.getName().equals("Bob")) {
 				actual = timeline.getMessage();
 			}
 		}
+
 		assertEquals(expected, actual);
-		
+
 	}
 
 }
